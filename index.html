@@ -39,24 +39,12 @@
       attribution: '&copy; <a href="https://carto.com/">CARTO</a>'
     });
 
-    // Dark theme (CartoDB Dark Matter)
-    const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://carto.com/">CARTO</a>'
-    });
-
     // Initialize map centered on Germany
     const map = L.map('map', {
       center: [51.1657, 10.4515], // Germany
       zoom: 6,
       layers: [white] // Use white theme as default
     });
-
-    // Layer control
-    const baseMaps = {
-      "White Theme": white,
-      "Dark Theme": dark
-    };
-    L.control.layers(baseMaps).addTo(map);
 
     // Helper: Parse query params for routes
     // Example: ?routes=48.783333,9.183333,53.5511,9.9937;52.52,13.405,52.2297,21.0122
