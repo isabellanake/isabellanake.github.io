@@ -1,1 +1,76 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Leaflet Map with Dark and White Theme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; width: 100vw; }
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // White theme (CartoDB Positron)
+    const white = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a>'
+    });
+
+    // Dark theme (CartoDB Dark Matter)
+    const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a>'
+    });
+
+    // Initialize map centered on Germany
+    const map = L.map('map', {
+      center: [51.1657, 10.4515], // Germany
+      zoom: 6,
+      layers: [white] // Use white theme as default
+    });
+
+    // Layer control
+    const baseMaps = {
+      "White Theme": white,
+      "Dark Theme": dark
+    };
+    L.control.layers(baseMaps).addTo(map);
+
+    // Define main routes
+    const routes = [
+      {
+        from: { name: "Stuttgart", coords: [48.783333, 9.183333] },
+        to: { name: "Hamburg", coords: [53.5511, 9.9937] }
+      },
+      {
+        from: { name: "Berlin", coords: [52.52, 13.405] },
+        to: { name: "Warsaw", coords: [52.2297, 21.0122] }
+      }
+    ];
+
+    // Add markers and green lines for each route
+    routes.forEach(route => {
+      L.marker(route.from.coords)
+        .addTo(map)
+        .bindPopup(`From: ${route.from.name}`);
+      L.marker(route.to.coords)
+        .addTo(map)
+        .bindPopup(`To: ${route.to.name}`);
+      L.polyline([route.from.coords, route.to.coords], { color: 'lime', weight: 3 }).addTo(map);
+    });
+
+    // Draw the red dashed gap between Hamburg and Berlin
+    const hamburg = [53.5511, 9.9937];
+    const berlin = [52.52, 13.405];
+    L.polyline([hamburg, berlin], {
+      color: 'red',
+      weight: 3,
+      dashArray: '10,10'
+    }).addTo(map);
+  </script>
+</body>
+</html>
