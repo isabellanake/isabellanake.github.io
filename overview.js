@@ -26,8 +26,8 @@ $(async function () {
             $tbody.append(`<tr class="transport-row">
                             <td>${item.transport_id}</td> 
                             <td>${new Date(item.created_at).toLocaleDateString('de-DE')}</td>
+                            <td>Mock Spot Market</td>
                             <td>${item.external_transport_id}</td>
-                            <td>${item.external_booking_id}</td>
                             <td>${item.partner_id}</td>
                             <td>${onloading.name || ''} (${onloading.day || ''})</td>
                             <td>${offloading.name || ''} (${offloading.day || ''})</td>
@@ -36,7 +36,7 @@ $(async function () {
                             </td>
                         </tr>`);
         });
-        
+
     } catch (error) {
         $tbody.append('<tr><td colspan="8">Failed to load data</td></tr>');
     }
