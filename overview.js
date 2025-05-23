@@ -97,7 +97,7 @@ $(function () {
                 .attr("y", d => y(d[1]))
                 .attr("height", d => y(0) - y(d[1]))
                 .attr("width", x.bandwidth())
-                .attr("fill", "#8197A5");
+                .attr("fill", "#888");
 
         } catch (error) {
             $tbody.empty();

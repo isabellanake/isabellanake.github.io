@@ -82,8 +82,7 @@ for (let i = 0; i < routes.length - 1; i++) {
 
 // Update info box
 document.getElementById('infoBox').innerHTML =
-    `Total route distance: <b style="color:#00529e;">${totalRouteKm.toFixed(0)} km</b><br>` +
-    `Total gap distance: <b style="color:red;">${totalGapKm.toFixed(0)} km</b>`;
+    `Total route distance: <b style="color:#00529e;">${totalRouteKm.toFixed(0)} km</b>`;
 
 // Fit map to show all points and lines
 if (allCoords.length > 0) {

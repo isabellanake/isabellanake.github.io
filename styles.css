@@ -15,14 +15,14 @@ body {
 }
 
 .btn-primary {
-    background-color: #00529E;
-    border-color: #00529E;
+    background-color: #00f;
+    border-color: #00f;
 }
 
 .top-bar {
     width: 100vw;
-    background: #00529E;
-    padding: 10px 0;
+    background: #000;
+    padding: 10px 24px;
     top: 0;
     left: 0;
     z-index: 2000;
@@ -31,7 +31,6 @@ body {
 
 .top-bar img {
     height: 36px;
-    margin-left: 24px;
 }
 
 /* 
