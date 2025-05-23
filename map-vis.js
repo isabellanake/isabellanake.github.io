@@ -42,10 +42,14 @@ if (routes.length === 0) {
 
 // Add markers and green lines for each route, and sum up total route distance
 let totalRouteKm = 0;
+const allCoords = [];
 routes.forEach(route => {
     L.marker(route.from.coords).addTo(map);
     L.marker(route.to.coords).addTo(map);
     L.polyline([route.from.coords, route.to.coords], { color: '#00529e', weight: 3 }).addTo(map);
+
+    // Collect all coordinates for fitting bounds
+    allCoords.push(route.from.coords, route.to.coords);
 
     // Calculate distance in km
     const fromLatLng = L.latLng(route.from.coords);
@@ -66,6 +70,9 @@ for (let i = 0; i < routes.length - 1; i++) {
             dashArray: '10,10'
         }).addTo(map);
 
+        // Collect gap coordinates for fitting bounds
+        allCoords.push(prevTo, nextFrom);
+
         // Calculate gap distance in km
         const prevToLatLng = L.latLng(prevTo);
         const nextFromLatLng = L.latLng(nextFrom);
@@ -77,3 +84,8 @@ for (let i = 0; i < routes.length - 1; i++) {
 document.getElementById('infoBox').innerHTML =
     `Total route distance: <b style="color:#00529e;">${totalRouteKm.toFixed(0)} km</b><br>` +
     `Total gap distance: <b style="color:red;">${totalGapKm.toFixed(0)} km</b>`;
+
+// Fit map to show all points and lines
+if (allCoords.length > 0) {
+    map.fitBounds(allCoords, { padding: [100, 100] });
+}

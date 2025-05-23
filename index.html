@@ -17,12 +17,15 @@
     <div class="top-bar">
         <a href="/">
             <img src="https://www.lkw-walter.com/static/assets/images/logos/LKW-Logo-RGB-NEG-220.svg?v=2025.4.3.720.cefca94f"
-                alt="LKW Walter Logo">
+            alt="LKW Walter Logo">
         </a>
     </div>
 
     <div id="overview-view" class="container-fluid">
-        <h2>Transports Overview</h2>
+        <div class="pt-3 d-flex justify-content-between">
+            <h2>Transports Overview</h2>
+            <div id="d3container"></div>
+        </div>
         <table id="transports-table" class="table">
             <thead>
                 <tr>
@@ -40,6 +43,8 @@
                 <!-- Data will be inserted here -->
             </tbody>
         </table>
+
+
     </div>
 
     <div id="map-view">
@@ -57,6 +62,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 
     <script src="routing.js"></script>
 
