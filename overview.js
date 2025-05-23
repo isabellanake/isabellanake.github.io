@@ -75,6 +75,15 @@ $(function () {
                 .attr("width", width)
                 .attr("height", height);
 
+            // Add caption
+            svg.append("text")
+                .attr("x", width / 2)
+                .attr("y", margin.top + 10)
+                .attr("text-anchor", "middle")
+                .attr("font-size", "16px")
+                .attr("font-weight", "bold")
+                .text("Transports per Day");
+
             // Add x-axis
             svg.append("g")
                 .attr("transform", `translate(0,${height - margin.bottom})`)

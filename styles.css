@@ -26,11 +26,41 @@ body {
     top: 0;
     left: 0;
     z-index: 2000;
-    height: 56px;
+    height: 68px;
 }
 
 .top-bar img {
     height: 36px;
+}
+
+.rainbow-text {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    violet 0%,
+    green 25%,
+    yellow 50%,
+    orange 75%,
+    red 87%,
+    rgb(130, 195, 238) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 100%;
+  animation: rainbow-move 4s linear infinite alternate;
+}
+
+.fat-text {
+  font-size: 2rem !important;
+  font-weight: 900 !important;
+}
+
+@keyframes rainbow-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 /* 
@@ -50,10 +80,10 @@ body {
 }
 
 #map {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 68px);
     width: 100vw;
     position: absolute;
-    top: 56px;
+    top: 68px;
     left: 0;
 }
 
