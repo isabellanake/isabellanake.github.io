@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-
-
-
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -33,6 +30,7 @@
                     <th>Partner ID</th>
                     <th>Onloading</th>
                     <th>Offloading</th>
+                    <th>Details</th> <!-- New column -->
                 </tr>
             </thead>
             <tbody>
@@ -56,34 +54,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script src="routing.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", async function () {
-            const $tbody = $('#transports-table tbody');
-            $tbody.empty();
-            try {
-                const response = await fetch('https://haymnoqetihmdnykhrdo.supabase.co/functions/v1/get-transports');
-                const data = await response.json();
-                data.forEach(item => {
-                    // Parse onloading/offloading details (fix single quotes)
-                    let onloading = item.onloading_details.replace(/'/g, '"');
-                    let offloading = item.offloading_details.replace(/'/g, '"');
-                    try { onloading = JSON.parse(onloading); } catch { onloading = {}; }
-                    try { offloading = JSON.parse(offloading); } catch { offloading = {}; }
-                    $tbody.append(`<tr>
-                        <td>${item.transport_id}</td>
-                        <td>${item.created_at}</td>
-                        <td>${item.external_transport_id}</td>
-                        <td>${item.external_booking_id}</td>
-                        <td>${item.partner_id}</td>
-                        <td>${onloading.name || ''} (${onloading.day || ''})</td>
-                        <td>${offloading.name || ''} (${offloading.day || ''})</td>
-                    </tr>`);
-                });
-            } catch (error) {
-                $tbody.append('<tr><td colspan="7">Failed to load data</td></tr>');
-            }
-        });
-    </script>
 
 </body>
 
