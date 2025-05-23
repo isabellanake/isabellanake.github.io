@@ -42,15 +42,21 @@ body {
   background-image: repeating-linear-gradient(
     -45deg,
     violet 0%,
-    green 25%,
-    yellow 50%,
-    orange 75%,
-    red 87%,
-    rgb(130, 195, 238) 100%
+    green 14%,
+    yellow 28%,
+    orange 42%,
+    red 57%,
+    rgb(130, 195, 238) 71%,
+    violet 85%,
+    green 88%,
+    yellow 91%,
+    orange 94%,
+    red 97%,
+    violet 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 400% 100%;
+  background-size: 800% 100%;
   animation: rainbow-move 4s linear infinite alternate;
 }
 
